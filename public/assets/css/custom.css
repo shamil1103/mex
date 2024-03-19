@@ -1,0 +1,49 @@
+
+.box-body{
+    padding: 10px 50px;
+}
+.logout a{
+    margin-top: 22px !important;
+    /* padding-bottom: 20px !important; */
+    font-size: 14px;
+    /* text-align: center; */
+    color: #00a65a !important;
+}
+.required::after {
+    content: '*';
+    color: red;
+  }
+
+  /* For Login Page  */
+.loginPage{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+  
+  .login-page, .register-page {
+    background: #d2d6de;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+.login-logo, .register-logo {
+  font-size: 35px;
+  text-align: center;
+  margin-bottom: 10px;
+  font-weight: 300;
+}
+
+
+/* .sidebar-menu li:hover a, .skin-blue .sidebar-menu li.active a, .skin-blue .sidebar-menu li.menu-open a {
+  color: #fff !important;
+  background: #1e282c !important;
+} */
+
+/* .active .sidebar-menu li, .sidebar-menu li:hover{
+  color: #fff !important;
+  background: #1e282c !important;
+} */
+/* .skin-blue .sidebar-menu li.active a {
+  border-left-color: #3c8dbc !important;
+} */
