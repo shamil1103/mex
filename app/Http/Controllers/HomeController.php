@@ -2,16 +2,35 @@
 
 namespace App\Http\Controllers;
 
-use Illuminate\Http\Request;
+use Illuminate\View\View;
 
 class HomeController extends Controller
 {
-    public function index()
+    /**
+     * Index
+     *
+     * @return View
+     */
+    public function index(): View
     {
-        return view("pages.home");
+        $data               = [];
+        $data['menu']       = "dashboard";
+        $data['child_menu'] = "";
+
+        return view("pages.home", $data);
     }
-    public function dashboard()
+
+    /**
+     * Dashboard
+     *
+     * @return View
+     */
+    public function dashboard(): View
     {
-        return view("pages.home");
+        $data               = [];
+        $data['menu']       = "dashboard";
+        $data['child_menu'] = "";
+
+        return view("pages.home", $data);
     }
 }

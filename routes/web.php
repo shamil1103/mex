@@ -2,18 +2,17 @@
 
 // use App\Http\Controllers\AuthController;
 
-use Illuminate\Support\Facades\Route;
-use App\Http\Controllers\HomeController;
-use App\Http\Controllers\StaffController;
-use App\Http\Controllers\ProfileController;
-use App\Http\Controllers\StaffLoanController;
-use App\Http\Controllers\ExpenseCatController;
-use App\Http\Controllers\OthersLoanController;
 use App\Http\Controllers\BankDepositController;
-use App\Http\Controllers\CashDepositController;
 use App\Http\Controllers\BkashDepositController;
-use App\Http\Controllers\OfficeexpenseController;
+use App\Http\Controllers\CashDepositController;
+use App\Http\Controllers\ExpenseCatController;
+use App\Http\Controllers\HomeController;
 use App\Http\Controllers\MarketingexpenseController;
+use App\Http\Controllers\OfficeexpenseController;
+use App\Http\Controllers\OthersLoanController;
+use App\Http\Controllers\StaffController;
+use App\Http\Controllers\StaffLoanController;
+use Illuminate\Support\Facades\Route;
 
 /*
 |--------------------------------------------------------------------------
@@ -24,14 +23,11 @@ use App\Http\Controllers\MarketingexpenseController;
 | routes are loaded by the RouteServiceProvider and all of them will
 | be assigned to the "web" middleware group. Make something great!
 |
-*/
-
-
+ */
 
 // Route::get('/dashboard', function () {
 //     return view('dashboard');
 // })->middleware(['auth', 'verified'])->name('dashboard');
-
 
 Route::get('/config/clear', function () {
     return \Illuminate\Support\Facades\Artisan::call('config:cache');
@@ -47,7 +43,7 @@ Route::middleware('auth')->group(function () {
 
     Route::get('/expenseCats', [ExpenseCatController::class, 'index'])->name('expenseCat.index');
     Route::post('/expenseCats', [ExpenseCatController::class, 'store'])->name('expenseCat.store');
-  
+
     Route::get('/officeexpenses', [OfficeexpenseController::class, 'index'])->name('officeexpense.index');
     Route::post('/officeexpenses', [OfficeexpenseController::class, 'store'])->name('officeexpense.store');
 
@@ -60,8 +56,8 @@ Route::middleware('auth')->group(function () {
     Route::get('/othersloans', [OthersLoanController::class, 'index'])->name('othersloan.index');
     Route::post('/othersloans', [OthersLoanController::class, 'store'])->name('othersloan.store');
 
-    Route::get('/cashdeposits', [CashDepositController::class, 'index'])->name('cashdeposit.index');
-    Route::post('/cashdeposits', [CashDepositController::class, 'store'])->name('cashdeposit.store');
+    Route::delete('cash-deposit/delete', [CashDepositController::class, 'delete'])->name('cash-deposit.delete');
+    Route::resource('cash-deposit', CashDepositController::class);
 
     Route::get('/bankdeposits', [BankDepositController::class, 'index'])->name('bankdeposit.index');
     Route::post('/bankdeposits', [BankDepositController::class, 'store'])->name('bankdeposit.store');
@@ -72,32 +68,23 @@ Route::middleware('auth')->group(function () {
     // Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');
     // Route::patch('/profile', [ProfileController::class, 'update'])->name('profile.update');
     // Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
-    
+
 });
-
-
-
-
 
 // Route::get('/', function () {
 //     return view('welcome');
 // });
- 
+
 // Route::group(['middleware' => 'guest'], function () {
 //     Route::get('/register', [AuthController::class, 'register'])->name('register');
 //     Route::post('/register', [AuthController::class, 'registerPost'])->name('register');
 //     Route::get('/login', [AuthController::class, 'login'])->name('login');
 //     Route::post('/login', [AuthController::class, 'loginPost'])->name('login');
 // });
- 
+
 // Route::group(['middleware' => 'auth'], function () {
 //     Route::get('/home', [HomeController::class, 'index']);
 //     Route::delete('/logout', [AuthController::class, 'logout'])->name('logout');
 // });
 
-
-
-
-
-require __DIR__.'/auth.php';
-        
+require __DIR__ . '/auth.php';
