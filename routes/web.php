@@ -59,8 +59,11 @@ Route::middleware('auth')->group(function () {
     Route::delete('cash-deposit/delete', [CashDepositController::class, 'delete'])->name('cash-deposit.delete');
     Route::resource('cash-deposit', CashDepositController::class);
 
-    Route::get('/bankdeposits', [BankDepositController::class, 'index'])->name('bankdeposit.index');
-    Route::post('/bankdeposits', [BankDepositController::class, 'store'])->name('bankdeposit.store');
+    Route::delete('bank-deposit/delete', [BankDepositController::class, 'delete'])->name('bank-deposit.delete');
+    Route::resource('bank-deposit', BankDepositController::class);
+
+    // Route::get('/bankdeposits', [BankDepositController::class, 'index'])->name('bankdeposit.index');
+    // Route::post('/bankdeposits', [BankDepositController::class, 'store'])->name('bankdeposit.store');
 
     Route::get('/bkashdeposits', [BkashDepositController::class, 'index'])->name('bkashdeposit.index');
     Route::post('/bkashdeposits', [BkashDepositController::class, 'store'])->name('bkashdeposit.store');

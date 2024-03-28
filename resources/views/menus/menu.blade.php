@@ -26,7 +26,7 @@
                 </a>
                 <ul class="treeview-menu">
                     <li class="@if(isset($child_menu) && $child_menu == 'cashDeposit') active @endif" ><a href="{{ route('cash-deposit.index') }}"><i class="fa fa-circle-o"></i> Cash </a></li>
-                    <li class="@if(isset($child_menu) && $child_menu == 'bankDeposit') active @endif" ><a href="{{ route('bankdeposit.index') }}"><i class="fa fa-circle-o"></i> Bank </a></li>
+                    <li class="@if(isset($child_menu) && $child_menu == 'bankDeposit') active @endif" ><a href="{{ route('bank-deposit.index') }}"><i class="fa fa-circle-o"></i> Bank </a></li>
                     <li class="@if(isset($child_menu) && $child_menu == 'bkashDeposit') active @endif" ><a href="{{ route('bkashdeposit.index') }}"><i class="fa fa-circle-o"></i> Bkash/Nagad </a></li>
                 </ul>
             </li>

@@ -61,7 +61,7 @@ class CashDepositController extends Controller
             $response = Session::flash('error', "Data Save Failed!");
         }
 
-        return redirect()->back()->with($response);
+        return redirect()->route('cash-deposit.index')->with($response);
     }
 
     /**
@@ -106,9 +106,9 @@ class CashDepositController extends Controller
         $cashDeposit = CashDeposit::where('id', $cashDepositId)->update($updateData);
 
         if ($cashDeposit) {
-            $response = Session::flash('success', "Cash Deposit Save Successfully!");
+            $response = Session::flash('success', "Cash Deposit Update Successfully!");
         } else {
-            $response = Session::flash('error', "Cash Deposit Save Failed!");
+            $response = Session::flash('error', "Cash Deposit Update Failed!");
         }
 
         return redirect()->route('cash-deposit.index')->with($response);

@@ -44,7 +44,7 @@ class CashDepositRequest extends FormRequest
             'depositor_mobile_no' => ['required', 'max:20', $uniqueRule],
             'depositor_address'   => ['nullable', 'string'],
             'depositor_nid_no'    => ['nullable', 'string', 'max:20', $uniqueRule],
-            'deposit_amount'      => ['required'],
+            'deposit_amount'      => ['required', 'numeric'],
         ];
     }
 

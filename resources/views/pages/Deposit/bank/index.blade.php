@@ -15,7 +15,7 @@
         <ol class="breadcrumb">
             <li><a href="{{ route('pages.home') }}"><i class="fa fa-dashboard"></i> Home </a></li>
             <li><a href="#"> Deposit </a></li>
-            <li class="active"> Cash Deposit </li>
+            <li class="active"> Bank Deposit </li>
         </ol>
     </section>
 
@@ -24,11 +24,14 @@
         <div class="row">
             <div class="col-xs-12">
                 <header class="bg-info" style="border-radius: 3px;">
-                    <a href="{{ route('cash-deposit.create') }}"class="btn btn-primary"><i class="fa fa-plus"></i> New Cash
+                    <a href="{{ route('bank-deposit.create') }}"class="btn btn-primary"><i class="fa fa-plus"></i> New Bank
                         Deposit </a>
                 </header>
+
                 <div class="mb" style="margin-bottom: 10px;"></div>
+
                 @include('pages.messages.flash-message')
+
             </div>
         </div>
     </section>
@@ -52,6 +55,7 @@
                                     <th>Depositor ID </th>
                                     <th>Depositor Name </th>
                                     <th>Depositor Mobile No </th>
+                                    <th>Bank Name </th>
                                     <th>Address </th>
                                     <th>NID No </th>
                                     <th>Deposit Amount </th>
@@ -59,26 +63,27 @@
                                 </tr>
                             </thead>
                             <tbody>
-                                @if (count($cashDeposits) > 0)
-                                    @foreach ($cashDeposits as $cashDeposit)
+                                @if (count($bankDeposits) > 0)
+                                    @foreach ($bankDeposits as $bankDeposit)
                                         <tr>
-                                            <td>{{ $cashDeposit->id }}</td>
-                                            <td>{{ $cashDeposit->deposit_type }}</td>
-                                            <td>{{ $cashDeposit->deposit_date }}</td>
-                                            <td>{{ $cashDeposit->depositor_id }}</td>
-                                            <td>{{ $cashDeposit->depositor_name }}</td>
-                                            <td>{{ $cashDeposit->depositor_mobile_no }}</td>
-                                            <td>{{ $cashDeposit->depositor_address }}</td>
-                                            <td>{{ $cashDeposit->depositor_nid_no }}</td>
-                                            <td>{{ $cashDeposit->deposit_amount }}</td>
+                                            <td>{{ $bankDeposit->id }}</td>
+                                            <td>{{ $bankDeposit->deposit_type }}</td>
+                                            <td>{{ $bankDeposit->deposit_date }}</td>
+                                            <td>{{ $bankDeposit->depositor_id }}</td>
+                                            <td>{{ $bankDeposit->depositor_name }}</td>
+                                            <td>{{ $bankDeposit->depositor_mobile_no }}</td>
+                                            <td>{{ $bankDeposit->bank_name }}</td>
+                                            <td>{{ $bankDeposit->depositor_description }}</td>
+                                            <td>{{ $bankDeposit->depositor_nid_no }}</td>
+                                            <td>{{ $bankDeposit->deposit_amount }}</td>
                                             <td>
                                                 <a style="padding: 2px"
-                                                    href="{{ route('cash-deposit.edit', ['cash_deposit' => $cashDeposit->id]) }}"><i
+                                                    href="{{ route('bank-deposit.edit', ['bank_deposit' => $bankDeposit->id]) }}"><i
                                                         class="fa fa-edit"></i></a>
                                                 <a target="#" style="padding: 2px" class="delete-btn"
-                                                    data-id="{{ $cashDeposit->id }}"
-                                                    data-route="{{ route('cash-deposit.delete') }}"
-                                                    title="Delete Cash Deposit"><i class="fa fa-trash"></i></a>
+                                                    data-id="{{ $bankDeposit->id }}"
+                                                    data-route="{{ route('bank-deposit.delete') }}"
+                                                    title="Delete Bank Deposit"><i class="fa fa-trash"></i></a>
                                             </td>
                                         </tr>
                                     @endforeach
