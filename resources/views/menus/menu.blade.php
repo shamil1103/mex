@@ -52,7 +52,7 @@
                 </a>
                 <ul class="treeview-menu">
                     <li class="@if(isset($child_menu) && $child_menu == 'staffLoan') active @endif" ><a href="{{ route('staff-loan.index') }}"><i class="fa fa-circle-o"></i> Staff Loan</a></li>
-                    <li class="@if(isset($child_menu) && $child_menu == 'otherLoan') active @endif" ><a href="{{ route('othersloan.index') }}"><i class="fa fa-circle-o"></i> Others Loan</a></li>
+                    <li class="@if(isset($child_menu) && $child_menu == 'othersLoan') active @endif" ><a href="{{ route('others-loan.index') }}"><i class="fa fa-circle-o"></i> Others Loan</a></li>
                 </ul>
             </li>
 

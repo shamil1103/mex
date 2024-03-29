@@ -10,7 +10,7 @@
 
     <section class="content-header">
       <h1>
-      Loan 
+      Loan
         <!-- <small>Preview</small> -->
       </h1>
       <ol class="breadcrumb">
@@ -57,7 +57,7 @@
           </div>
           <div class="modal-body">
 
-            <form role="form" action="{{ route('othersloan.index') }}" method="post">
+            <form role="form" action="{{ route('others-loan.index') }}" method="post">
               @csrf
 
               <div class="box-body">
@@ -66,7 +66,7 @@
                   <label class="required"> Date </label>
                   <input type="date" class="form-control pull-right" id="" name="loan_date" required>
 
-                  @error(' ')  
+                  @error(' ')
                   <span>{{ $message }}</span>
                   @enderror
                 </div>
@@ -74,17 +74,17 @@
                   <label for="loan_name" class="required"> Name </label>
                   <input type="text" class="form-control pull-right" id="loan_name" placeholder="enter name" name="loan_name" required>
 
-                  @error(' ')  
+                  @error(' ')
                   <span>{{ $message }}</span>
                   @enderror
                 </div>
-                
-                
+
+
                 <div class="form-group">
                   <label for="loan_address" class=" "> Address </label>
                   <textarea class="form-control" rows="3" placeholder="enter address" id="loan_address" name="loan_address" ></textarea>
-                 
-                  @error(' ')  
+
+                  @error(' ')
                   <span>{{ $message }}</span>
                   @enderror
                 </div>
@@ -92,8 +92,8 @@
                 <div class="form-group">
                   <label for="loan_reference" class="required"> Reference </label>
                   <input type="text" class="form-control" id="loan_reference" placeholder=" enter reference name" name="loan_reference" required>
-                 
-                  @error('Enter Leader Name ')  
+
+                  @error('Enter Leader Name ')
                   <span>{{ $message }}</span>
                   @enderror
                 </div>
@@ -101,21 +101,21 @@
                 <div class="form-group">
                   <label for="loan_description">Description </label>
                   <textarea class="form-control" rows="3" placeholder="enter description" id="loan_description" name="loan_description"></textarea>
-                  
-                  @error(' ')  
+
+                  @error(' ')
                   <span>{{ $message }}</span>
                   @enderror
                 </div>
-                
+
                 <div class="form-group">
                   <label for="loan_amount" class="required"> Expense Amount </label>
                   <input type="number" class="form-control" id="loan_amount" placeholder="enter loan amount" name="loan_amount" required>
 
-                  @error(' ')  
+                  @error(' ')
                   <span>{{ $message }}</span>
                   @enderror
                 </div>
-                
+
               </div>
               <div class=" text-center">
                 <button type="submit" class="btn btn-primary"> Save </button>
@@ -154,7 +154,7 @@
                 </tr>
                 </thead>
                 <tbody>
-                    
+
                   @if(count($othersloan)>0)
                     @foreach($othersloan as $othersloan)
                     <tr>
@@ -170,7 +170,7 @@
                     </tr>
                     @endforeach
                   @endif
-                  
+
                 </tbody>
 
 

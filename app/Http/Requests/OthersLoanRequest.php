@@ -6,7 +6,7 @@ use App\Models\Staff;
 use Illuminate\Foundation\Http\FormRequest;
 use Illuminate\Validation\Rule;
 
-class StaffLoanRequest extends FormRequest
+class OthersLoanRequest extends FormRequest
 {
     /**
      * Determine if the user is authorized to make this request.
@@ -24,12 +24,12 @@ class StaffLoanRequest extends FormRequest
     public function rules(): array
     {
         return [
-            'staff_loan_date'        => ['required'],
-            'staff_id'               => ['required', 'integer', 'min:1', Rule::exists(Staff::class, 'id')],
-            'staff_address'          => ['nullable'],
-            'staff_loan_description' => ['nullable'],
-            'staff_leader_name'      => ['string', 'max:100'],
-            'staff_loan_amount'      => ['required', 'numeric'],
+            'loan_date'        => ['required'],
+            'loan_name'        => ['required', 'string', 'max:100'],
+            'loan_address'     => ['nullable'],
+            'loan_reference'   => ['required', 'string', 'max:100'],
+            'loan_description' => ['nullable'],
+            'loan_amount'      => ['numeric'],
         ];
     }
 
