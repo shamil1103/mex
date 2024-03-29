@@ -27,11 +27,11 @@
                 <ul class="treeview-menu">
                     <li class="@if(isset($child_menu) && $child_menu == 'cashDeposit') active @endif" ><a href="{{ route('cash-deposit.index') }}"><i class="fa fa-circle-o"></i> Cash </a></li>
                     <li class="@if(isset($child_menu) && $child_menu == 'bankDeposit') active @endif" ><a href="{{ route('bank-deposit.index') }}"><i class="fa fa-circle-o"></i> Bank </a></li>
-                    <li class="@if(isset($child_menu) && $child_menu == 'bkashDeposit') active @endif" ><a href="{{ route('bkashdeposit.index') }}"><i class="fa fa-circle-o"></i> Bkash/Nagad </a></li>
+                    <li class="@if(isset($child_menu) && $child_menu == 'mobileBankingDeposit') active @endif" ><a href="{{ route('mobile-banking-deposit.index') }}"><i class="fa fa-circle-o"></i> Mobile Banking</a></li>
                 </ul>
             </li>
 
-            <li class="treeview">
+            <li class="treeview @if(isset($menu) && $menu == 'staff') active menu-open @endif">
                 <a href="#">
                     <i class="fa fa-users"></i> <span>Staff</span>
                     <span class="pull-right-container">
@@ -39,7 +39,7 @@
                     </span>
                 </a>
                 <ul class="treeview-menu">
-                    <li><a href="{{ route('staff.index') }}"><i class="fa fa-circle-o"></i> Staff Info </a></li>
+                    <li><a class="@if(isset($child_menu) && $child_menu == 'staff') active @endif"  href="{{ route('staff.index') }}"><i class="fa fa-circle-o"></i> Staff Info </a></li>
                 </ul>
             </li>
 

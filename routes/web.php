@@ -8,6 +8,7 @@ use App\Http\Controllers\CashDepositController;
 use App\Http\Controllers\ExpenseCatController;
 use App\Http\Controllers\HomeController;
 use App\Http\Controllers\MarketingexpenseController;
+use App\Http\Controllers\MobileBankingDepositController;
 use App\Http\Controllers\OfficeexpenseController;
 use App\Http\Controllers\OthersLoanController;
 use App\Http\Controllers\StaffController;
@@ -38,8 +39,6 @@ Route::middleware('auth')->group(function () {
 
     Route::get('/dashboard', [HomeController::class, 'dashboard'])->name('pages.home');
 
-    Route::get('/staffs', [StaffController::class, 'index'])->name('staff.index');
-    Route::post('/staffs', [StaffController::class, 'store'])->name('staff.store');
 
     Route::get('/expenseCats', [ExpenseCatController::class, 'index'])->name('expenseCat.index');
     Route::post('/expenseCats', [ExpenseCatController::class, 'store'])->name('expenseCat.store');
@@ -56,17 +55,24 @@ Route::middleware('auth')->group(function () {
     Route::get('/othersloans', [OthersLoanController::class, 'index'])->name('othersloan.index');
     Route::post('/othersloans', [OthersLoanController::class, 'store'])->name('othersloan.store');
 
+
+    Route::delete('staff/delete', [StaffController::class, 'delete'])->name('staff.delete');
+    Route::resource('staff', StaffController::class);
+
     Route::delete('cash-deposit/delete', [CashDepositController::class, 'delete'])->name('cash-deposit.delete');
     Route::resource('cash-deposit', CashDepositController::class);
 
     Route::delete('bank-deposit/delete', [BankDepositController::class, 'delete'])->name('bank-deposit.delete');
     Route::resource('bank-deposit', BankDepositController::class);
 
+    Route::delete('mobile-banking-deposit/delete', [MobileBankingDepositController::class, 'delete'])->name('mobile-banking-deposit.delete');
+    Route::resource('mobile-banking-deposit', MobileBankingDepositController::class);
+
     // Route::get('/bankdeposits', [BankDepositController::class, 'index'])->name('bankdeposit.index');
     // Route::post('/bankdeposits', [BankDepositController::class, 'store'])->name('bankdeposit.store');
 
-    Route::get('/bkashdeposits', [BkashDepositController::class, 'index'])->name('bkashdeposit.index');
-    Route::post('/bkashdeposits', [BkashDepositController::class, 'store'])->name('bkashdeposit.store');
+    // Route::get('/bkashdeposits', [BkashDepositController::class, 'index'])->name('bkashdeposit.index');
+    // Route::post('/bkashdeposits', [BkashDepositController::class, 'store'])->name('bkashdeposit.store');
 
     // Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');
     // Route::patch('/profile', [ProfileController::class, 'update'])->name('profile.update');
