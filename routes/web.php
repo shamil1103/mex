@@ -3,9 +3,8 @@
 // use App\Http\Controllers\AuthController;
 
 use App\Http\Controllers\BankDepositController;
-use App\Http\Controllers\BkashDepositController;
 use App\Http\Controllers\CashDepositController;
-use App\Http\Controllers\ExpenseCatController;
+use App\Http\Controllers\ExpenseCategoryController;
 use App\Http\Controllers\HomeController;
 use App\Http\Controllers\MarketingexpenseController;
 use App\Http\Controllers\MobileBankingDepositController;
@@ -39,17 +38,14 @@ Route::middleware('auth')->group(function () {
 
     Route::get('/dashboard', [HomeController::class, 'dashboard'])->name('pages.home');
 
-
-    Route::get('/expenseCats', [ExpenseCatController::class, 'index'])->name('expenseCat.index');
-    Route::post('/expenseCats', [ExpenseCatController::class, 'store'])->name('expenseCat.store');
-
     Route::get('/officeexpenses', [OfficeexpenseController::class, 'index'])->name('officeexpense.index');
     Route::post('/officeexpenses', [OfficeexpenseController::class, 'store'])->name('officeexpense.store');
 
     Route::get('/marketingexpenses', [MarketingexpenseController::class, 'index'])->name('marketingexpense.index');
     Route::post('/marketingexpenses', [MarketingexpenseController::class, 'store'])->name('marketingexpense.store');
 
-
+    Route::delete('expense-category/delete', [ExpenseCategoryController::class, 'delete'])->name('expense-category.delete');
+    Route::resource('expense-category', ExpenseCategoryController::class);
 
     Route::delete('staff/delete', [StaffController::class, 'delete'])->name('staff.delete');
     Route::resource('staff', StaffController::class);
