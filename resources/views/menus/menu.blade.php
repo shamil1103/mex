@@ -39,7 +39,7 @@
                     </span>
                 </a>
                 <ul class="treeview-menu">
-                    <li><a class="@if(isset($child_menu) && $child_menu == 'staff') active @endif"  href="{{ route('staff.index') }}"><i class="fa fa-circle-o"></i> Staff Info </a></li>
+                    <li class="@if(isset($child_menu) && $child_menu == 'staff') active @endif" ><a href="{{ route('staff.index') }}"><i class="fa fa-circle-o"></i> Staff Info</a></li>
                 </ul>
             </li>
 

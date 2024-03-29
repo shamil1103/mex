@@ -56,9 +56,9 @@ class CashDepositController extends Controller
         $cashDeposit = CashDeposit::create($insertData);
 
         if ($cashDeposit) {
-            $response = Session::flash('success', "Data Save Successfully!");
+            $response = Session::flash('success', "Cash Deposit Save Successfully!");
         } else {
-            $response = Session::flash('error', "Data Save Failed!");
+            $response = Session::flash('error', "Cash Deposit Save Failed!");
         }
 
         return redirect()->route('cash-deposit.index')->with($response);

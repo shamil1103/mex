@@ -49,40 +49,35 @@
                             <thead>
                                 <tr>
                                     <th>SL No </th>
-                                    <th>Deposit Type </th>
-                                    <th>Date </th>
-                                    <th>Depositor ID </th>
-                                    <th>Depositor Name </th>
-                                    <th>Depositor Mobile No </th>
-                                    <th>Bank Name </th>
+                                    <th>Staff ID</th>
+                                    <th>Staff Name </th>
+                                    <th>Staff Mobile No </th>
                                     <th>Address </th>
                                     <th>NID No </th>
-                                    <th>Deposit Amount </th>
+                                    <th>Email ID </th>
+                                    <th>Staff Salary </th>
                                     <th>Action </th>
                                 </tr>
                             </thead>
                             <tbody>
-                                @if (count($bankDeposits) > 0)
-                                    @foreach ($bankDeposits as $bankDeposit)
+                                @if (count($staffs) > 0)
+                                    @foreach ($staffs as $staff)
                                         <tr>
-                                            <td>{{ $bankDeposit->id }}</td>
-                                            <td>{{ $bankDeposit->deposit_type }}</td>
-                                            <td>{{ $bankDeposit->deposit_date }}</td>
-                                            <td>{{ $bankDeposit->depositor_id }}</td>
-                                            <td>{{ $bankDeposit->depositor_name }}</td>
-                                            <td>{{ $bankDeposit->depositor_mobile_no }}</td>
-                                            <td>{{ $bankDeposit->bank_name }}</td>
-                                            <td>{{ $bankDeposit->depositor_description }}</td>
-                                            <td>{{ $bankDeposit->depositor_nid_no }}</td>
-                                            <td>{{ $bankDeposit->deposit_amount }}</td>
+                                            <td>{{ $loop->iteration }}</td>
+                                            <td>{{ $staff->staff_id }}</td>
+                                            <td>{{ $staff->staff_name }}</td>
+                                            <td>{{ $staff->staff_mobile_no }}</td>
+                                            <td>{{ $staff->staff_address }}</td>
+                                            <td>{{ $staff->staff_nid_no }}</td>
+                                            <td>{{ $staff->staff_email_address }}</td>
+                                            <td>{{ $staff->staff_salary_amount }}</td>
                                             <td>
                                                 <a style="padding: 2px"
-                                                    href="{{ route('bank-deposit.edit', ['bank_deposit' => $bankDeposit->id]) }}"><i
+                                                    href="{{ route('staff.edit', ['staff' => $staff->id]) }}"><i
                                                         class="fa fa-edit"></i></a>
                                                 <a target="#" style="padding: 2px" class="delete-btn"
-                                                    data-id="{{ $bankDeposit->id }}"
-                                                    data-route="{{ route('bank-deposit.delete') }}"
-                                                    title="Delete Bank Deposit"><i class="fa fa-trash"></i></a>
+                                                    data-id="{{ $staff->id }}" data-route="{{ route('staff.delete') }}"
+                                                    title="Delete Staff"><i class="fa fa-trash"></i></a>
                                             </td>
                                         </tr>
                                     @endforeach

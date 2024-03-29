@@ -64,7 +64,7 @@
                                 @if (count($mobileBankingDeposits) > 0)
                                     @foreach ($mobileBankingDeposits as $mobileBankingDeposit)
                                         <tr>
-                                            <td>{{ $mobileBankingDeposit->id }}</td>
+                                            <td>{{ $loop->iteration }}</td>
                                             <td>{{ $mobileBankingDeposit->deposit_type }}</td>
                                             <td>{{ $mobileBankingDeposit->deposit_date }}</td>
                                             <td>{{ $mobileBankingDeposit->depositor_id }}</td>

@@ -10,12 +10,12 @@
 
     <section class="content-header">
         <h1>
-            Create Bank Deposit
+            Create Staff
         </h1>
         <ol class="breadcrumb">
             <li><a href="{{ route('pages.home') }}"><i class="fa fa-dashboard"></i> Home </a></li>
             <li><a href="#"> Deposit </a></li>
-            <li><a href="{{ route('bank-deposit.index') }}"> Bank Deposit </a></li>
+            <li><a href="{{ route('staff.index') }}"> Staff </a></li>
             <li class="active">Create </li>
         </ol>
     </section>
@@ -35,12 +35,12 @@
             <div class="col-md-8 col-md-offset-2">
                 <div class="box box-primary">
                     <div class="box-header with-border">
-                        <h3 class="box-title">Create Bank Deposit</h3>
+                        <h3 class="box-title">Create Staff</h3>
                     </div>
-                    <form class="needs-validation was-validated" action="{{ route('bank-deposit.store') }}" method="post"
+                    <form class="needs-validation was-validated" action="{{ route('staff.store') }}" method="post"
                         role="form">
                         @csrf
-                        @include('pages.Deposit.bank.form')
+                        @include('pages.staff.staff.form')
 
                         <div class="box-footer">
                             <button type="submit" class="btn btn-primary">Submit</button>

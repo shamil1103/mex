@@ -62,7 +62,7 @@
                                 @if (count($cashDeposits) > 0)
                                     @foreach ($cashDeposits as $cashDeposit)
                                         <tr>
-                                            <td>{{ $cashDeposit->id }}</td>
+                                            <td>{{ $loop->iteration }}</td>
                                             <td>{{ $cashDeposit->deposit_type }}</td>
                                             <td>{{ $cashDeposit->deposit_date }}</td>
                                             <td>{{ $cashDeposit->depositor_id }}</td>
