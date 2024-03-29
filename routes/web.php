@@ -49,15 +49,15 @@ Route::middleware('auth')->group(function () {
     Route::get('/marketingexpenses', [MarketingexpenseController::class, 'index'])->name('marketingexpense.index');
     Route::post('/marketingexpenses', [MarketingexpenseController::class, 'store'])->name('marketingexpense.store');
 
-    Route::get('/staffloans', [StaffLoanController::class, 'index'])->name('staffloan.index');
-    Route::post('/staffloans', [StaffLoanController::class, 'store'])->name('staffloan.store');
-
     Route::get('/othersloans', [OthersLoanController::class, 'index'])->name('othersloan.index');
     Route::post('/othersloans', [OthersLoanController::class, 'store'])->name('othersloan.store');
 
 
     Route::delete('staff/delete', [StaffController::class, 'delete'])->name('staff.delete');
     Route::resource('staff', StaffController::class);
+
+    Route::delete('staff-loan/delete', [StaffLoanController::class, 'delete'])->name('staff-loan.delete');
+    Route::resource('staff-loan', StaffLoanController::class);
 
     Route::delete('cash-deposit/delete', [CashDepositController::class, 'delete'])->name('cash-deposit.delete');
     Route::resource('cash-deposit', CashDepositController::class);

@@ -58,7 +58,7 @@
     </div>
     <div class="form-group">
         <label for="staff_salary_amount" class="required"> Salary Amount </label>
-        <input type="text" class="form-control @error('staff_salary_amount') is-invalid @enderror"
+        <input type="number" class="form-control @error('staff_salary_amount') is-invalid @enderror"
             id="staff_salary_amount" name="staff_salary_amount"
             value="{{ old('staff_salary_amount', $staff->staff_salary_amount ?? null) }}"
             placeholder="enter salary amount" required>
