@@ -8,7 +8,7 @@ use App\Http\Controllers\ExpenseCategoryController;
 use App\Http\Controllers\HomeController;
 use App\Http\Controllers\MarketingexpenseController;
 use App\Http\Controllers\MobileBankingDepositController;
-use App\Http\Controllers\OfficeexpenseController;
+use App\Http\Controllers\OfficeExpenseController;
 use App\Http\Controllers\OthersLoanController;
 use App\Http\Controllers\StaffController;
 use App\Http\Controllers\StaffLoanController;
@@ -38,32 +38,33 @@ Route::middleware('auth')->group(function () {
 
     Route::get('/dashboard', [HomeController::class, 'dashboard'])->name('pages.home');
 
-    Route::get('/officeexpenses', [OfficeexpenseController::class, 'index'])->name('officeexpense.index');
-    Route::post('/officeexpenses', [OfficeexpenseController::class, 'store'])->name('officeexpense.store');
 
     Route::get('/marketingexpenses', [MarketingexpenseController::class, 'index'])->name('marketingexpense.index');
     Route::post('/marketingexpenses', [MarketingexpenseController::class, 'store'])->name('marketingexpense.store');
 
+    Route::delete('office-expense/delete', [OfficeExpenseController::class, 'delete'])->name('office-expense.delete');
+    Route::resource('office-expense', OfficeExpenseController::class)->except(['show', 'delete']);
+
     Route::delete('expense-category/delete', [ExpenseCategoryController::class, 'delete'])->name('expense-category.delete');
-    Route::resource('expense-category', ExpenseCategoryController::class);
+    Route::resource('expense-category', ExpenseCategoryController::class)->except(['show', 'delete']);
 
     Route::delete('staff/delete', [StaffController::class, 'delete'])->name('staff.delete');
-    Route::resource('staff', StaffController::class);
+    Route::resource('staff', StaffController::class)->except(['show', 'delete']);
 
     Route::delete('staff-loan/delete', [StaffLoanController::class, 'delete'])->name('staff-loan.delete');
-    Route::resource('staff-loan', StaffLoanController::class);
+    Route::resource('staff-loan', StaffLoanController::class)->except(['show', 'delete']);
 
     Route::delete('others-loan/delete', [OthersLoanController::class, 'delete'])->name('others-loan.delete');
-    Route::resource('others-loan', OthersLoanController::class);
+    Route::resource('others-loan', OthersLoanController::class)->except(['show', 'delete']);
 
     Route::delete('cash-deposit/delete', [CashDepositController::class, 'delete'])->name('cash-deposit.delete');
-    Route::resource('cash-deposit', CashDepositController::class);
+    Route::resource('cash-deposit', CashDepositController::class)->except(['show', 'delete']);
 
     Route::delete('bank-deposit/delete', [BankDepositController::class, 'delete'])->name('bank-deposit.delete');
-    Route::resource('bank-deposit', BankDepositController::class);
+    Route::resource('bank-deposit', BankDepositController::class)->except(['show', 'delete']);
 
     Route::delete('mobile-banking-deposit/delete', [MobileBankingDepositController::class, 'delete'])->name('mobile-banking-deposit.delete');
-    Route::resource('mobile-banking-deposit', MobileBankingDepositController::class);
+    Route::resource('mobile-banking-deposit', MobileBankingDepositController::class)->except(['show', 'delete']);
 
     // Route::get('/bankdeposits', [BankDepositController::class, 'index'])->name('bankdeposit.index');
     // Route::post('/bankdeposits', [BankDepositController::class, 'store'])->name('bankdeposit.store');
