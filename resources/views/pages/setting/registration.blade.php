@@ -60,7 +60,7 @@
 
                 <div class="modal-body">
 
-                    <form role="form" action="{{ route('register') }}" method="post">
+                    <form role="form" action="{{ route('register') }}" method="post" enctype="multipart/form-data">
                         @csrf
 
                         <div class="box-body">
@@ -131,7 +131,6 @@
                                     <th>SL No </th>
                                     <th>Username</th>
                                     <th>Email ID </th>
-                                    <!-- <th>Password </th> -->
                                 </tr>
                             </thead>
                             <tbody>
@@ -141,7 +140,6 @@
                                             <td>{{ $user->id }} </td>
                                             <td> {{ $user->name }} </td>
                                             <td> {{ $user->email }} </td>
-                                            <!-- <td> {{ $user->password }} </td> -->
                                         </tr>
                                     @endforeach
                                 @endif

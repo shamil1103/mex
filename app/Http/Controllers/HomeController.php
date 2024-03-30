@@ -24,6 +24,7 @@ class HomeController extends Controller
         $data               = [];
         $data['menu']       = "dashboard";
         $data['child_menu'] = "";
+
         return view("pages.home", $data);
     }
 
@@ -36,7 +37,6 @@ class HomeController extends Controller
     {
         $data               = [];
         $data['menu']       = "dashboard";
-        $data['dateRangerPicker']       = true;
         $data['child_menu'] = "";
 
         $cashDeposits          = CashDeposit::select('deposit_date', DB::raw('sum(deposit_amount) as deposit_amount'))->groupBy('deposit_date')->get()->keyBy('deposit_date');

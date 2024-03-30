@@ -10,12 +10,12 @@
 
     <section class="content-header">
         <h1>
-            Expense Category
+            User
         </h1>
         <ol class="breadcrumb">
             <li><a href="{{ route('pages.home') }}"><i class="fa fa-dashboard"></i> Home </a></li>
-            <li><a href="#"> Settings</a></li>
-            <li class="active">Expense Category </li>
+            <li><a href="#"> Settings </a></li>
+            <li class="active">User </li>
         </ol>
     </section>
 
@@ -24,9 +24,8 @@
         <div class="row">
             <div class="col-xs-12">
                 <header class="bg-info" style="border-radius: 3px;">
-                    <a href="{{ route('expense-category.create') }}"class="btn btn-primary"><i class="fa fa-plus"></i> New
-                        Expense
-                        Category </a>
+                    <a href="{{ route('user.create') }}"class="btn btn-primary"><i class="fa fa-plus"></i> New
+                        User </a>
                 </header>
 
                 <div class="mb" style="margin-bottom: 10px;"></div>
@@ -52,22 +51,25 @@
                                 <tr>
                                     <th>SL No </th>
                                     <th>Name</th>
+                                    <th>Email</th>
                                     <th>Action </th>
                                 </tr>
                             </thead>
                             <tbody>
-                                @foreach ($expenseCategories as $expenseCategory)
+                                @foreach ($users as $user)
                                     <tr>
                                         <td>{{ $loop->iteration }}</td>
-                                        <td>{{ $expenseCategory->name }}</td>
+                                        <td>{{ $user->name }}</td>
+                                        <td>{{ $user->email }}</td>
                                         <td>
                                             <a style="padding: 2px"
-                                                href="{{ route('expense-category.edit', ['expense_category' => $expenseCategory->id]) }}"><i
+                                                href="{{ route('user.edit', ['user' => $user->id]) }}"><i
                                                     class="fa fa-edit"></i></a>
-                                            <a target="#" style="padding: 2px" class="delete-btn"
-                                                data-id="{{ $expenseCategory->id }}"
-                                                data-route="{{ route('expense-category.delete') }}"
-                                                title="Delete Expense Category"><i class="fa fa-trash"></i></a>
+                                            @if (auth()->user()->id !== $user->id)
+                                                <a target="#" style="padding: 2px" class="delete-btn"
+                                                    data-id="{{ $user->id }}" data-route="{{ route('user.delete') }}"
+                                                    title="Delete User"><i class="fa fa-trash"></i></a>
+                                            @endif
                                         </td>
                                     </tr>
                                 @endforeach

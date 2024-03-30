@@ -40,14 +40,15 @@ Route::middleware('auth')->group(function () {
 
     Route::get('/dashboard', [HomeController::class, 'dashboard'])->name('pages.home');
 
+    Route::delete('expense-category/delete', [ExpenseCategoryController::class, 'delete'])->name('expense-category.delete');
+    Route::resource('expense-category', ExpenseCategoryController::class)->except(['show', 'delete']);
+
     Route::delete('marketing-expense/delete', [MarketingExpenseController::class, 'delete'])->name('marketing-expense.delete');
     Route::resource('marketing-expense', MarketingExpenseController::class)->except(['show', 'delete']);
 
     Route::delete('office-expense/delete', [OfficeExpenseController::class, 'delete'])->name('office-expense.delete');
     Route::resource('office-expense', OfficeExpenseController::class)->except(['show', 'delete']);
 
-    Route::delete('expense-category/delete', [ExpenseCategoryController::class, 'delete'])->name('expense-category.delete');
-    Route::resource('expense-category', ExpenseCategoryController::class)->except(['show', 'delete']);
 
     Route::delete('staff/delete', [StaffController::class, 'delete'])->name('staff.delete');
     Route::resource('staff', StaffController::class)->except(['show', 'delete']);

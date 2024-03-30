@@ -104,8 +104,8 @@
                 <ul class="treeview-menu">
                     <li class="@if (isset($child_menu) && $child_menu == 'expenseCategory') active @endif"><a
                             href="{{ route('expense-category.index') }}"><i class="fa fa-circle-o"></i> Expense Category</a></li>
-                    <li class="@if (isset($child_menu) && $child_menu == 'othersLoan') active @endif"><a href="{{ route('register') }}"><i
-                                class="fa fa-circle-o"></i> Registration</a></li>
+                    <li class="@if (isset($child_menu) && $child_menu == 'user') active @endif"><a href="{{ route('user.index') }}"><i
+                                class="fa fa-circle-o"></i> User</a></li>
                 </ul>
             </li>
 
