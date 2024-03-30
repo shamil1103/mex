@@ -26,7 +26,7 @@
                 <!-- small box -->
                 <div class="small-box bg-aqua">
                     <div class="inner">
-                        <h3> {{ number_format(($dashboardData['total_deposit'] ?? 0), 2) }} </h3>
+                        <h3> {{ number_format($dashboardData['total_deposit'] ?? 0, 2) }} </h3>
 
                         <p> Deposit </p>
                     </div>
@@ -41,7 +41,7 @@
                 <!-- small box -->
                 <div class="small-box bg-green">
                     <div class="inner">
-                        <h3>{{ number_format(($dashboardData['total_expense'] ?? 0), 2) }} </h3>
+                        <h3>{{ number_format($dashboardData['total_expense'] ?? 0, 2) }} </h3>
 
                         <p> Expense </p>
                     </div>
@@ -63,7 +63,8 @@
                     <div class="icon">
                         <i class="ion ion-person-add"></i>
                     </div>
-                    <a href="{{ route('staff.index') }}" class="small-box-footer">More info <i class="fa fa-arrow-circle-right"></i></a>
+                    <a href="{{ route('staff.index') }}" class="small-box-footer">More info <i
+                            class="fa fa-arrow-circle-right"></i></a>
                 </div>
             </div>
             <!-- ./col -->
@@ -100,6 +101,32 @@
 @endsection
 
 @section('page-js')
+    <script>
+        $(function() {
+            // Sales chart
+            var area = new Morris.Area({
+                element: "revenue-chart",
+                resize: true,
+                data: [
+                    @if(isset($revenue_charts))
+                    @foreach ($revenue_charts as $revenue_chart)
+                        {
+                            "day": "{{ $revenue_chart['date'] }}",
+                            "cashAmount": "{{ $revenue_chart['cashAmount'] }}",
+                            "bankAmount": "{{ $revenue_chart['bankAmount'] }}",
+                            "mobileBankingAmount": "{{ $revenue_chart['mobileBankingAmount'] }}"
+                        },
+                    @endforeach
+                    @endif
+                ],
+                xkey: "day",
+                ykeys: ["cashAmount", "bankAmount", "mobileBankingAmount"],
+                labels: ["Cash", "Bank", "Mobile Banking"],
+                lineColors: ["#3e679e", "#4aa8ba", "#32a852"],
+                hideHover: "auto",
+            });
 
+        });
+    </script>
 
 @endsection
