@@ -9,7 +9,13 @@ class Marketingexpense extends Model
 {
     use HasFactory;
 
-    protected $fillable = ['marketing_expense_date', 'expense_name', 'marketing_expense_description', 'marketing_expense_amount', 'staff_id'];
+    protected $fillable = [
+        'marketing_expense_date',
+        'expense_name',
+        'marketing_expense_description',
+        'marketing_expense_amount',
+        'staff_id'
+    ];
 
     // protected $primaryKey = ' ';
 

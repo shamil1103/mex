@@ -73,7 +73,7 @@
                 </a>
                 <ul class="treeview-menu">
                     <li class="@if (isset($child_menu) && $child_menu == 'officeExpense') active @endif"><a href="{{ route('office-expense.index') }}"><i class="fa fa-circle-o"></i> Office </a></li>
-                    <li class="@if (isset($child_menu) && $child_menu == 'marketingExpense') active @endif"><a href="{{ route('marketingexpense.index') }}"><i class="fa fa-circle-o"></i> Marketing </a>
+                    <li class="@if (isset($child_menu) && $child_menu == 'marketingExpense') active @endif"><a href="{{ route('marketing-expense.index') }}"><i class="fa fa-circle-o"></i> Marketing </a>
                     </li>
                 </ul>
             </li>

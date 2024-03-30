@@ -2,11 +2,11 @@
 
 namespace App\Http\Requests;
 
-use App\Models\ExpenseCategory;
+use App\Models\Staff;
 use Illuminate\Foundation\Http\FormRequest;
 use Illuminate\Validation\Rule;
 
-class OfficeExpenseRequest extends FormRequest
+class MarketingExpenseRequest extends FormRequest
 {
 
     /**
@@ -25,11 +25,11 @@ class OfficeExpenseRequest extends FormRequest
     public function rules(): array
     {
         return [
-            'expense_category_id'        => ['required', 'integer', 'min:1', Rule::exists(ExpenseCategory::class, 'id')],
-            'expense_date'               => ['required'],
-            'expense_name'               => ['required', 'string'],
-            'office_expense_description' => ['nullable', 'string'],
-            'office_expense_amount'      => ['required', 'numeric'],
+            'staff_id'                      => ['required', 'integer', 'min:1', Rule::exists(Staff::class, 'id')],
+            'marketing_expense_date'        => ['required'],
+            'expense_name'                  => ['required', 'string'],
+            'marketing_expense_description' => ['nullable', 'string'],
+            'marketing_expense_amount'      => ['required', 'numeric'],
         ];
     }
 

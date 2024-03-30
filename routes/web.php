@@ -6,7 +6,7 @@ use App\Http\Controllers\BankDepositController;
 use App\Http\Controllers\CashDepositController;
 use App\Http\Controllers\ExpenseCategoryController;
 use App\Http\Controllers\HomeController;
-use App\Http\Controllers\MarketingexpenseController;
+use App\Http\Controllers\MarketingExpenseController;
 use App\Http\Controllers\MobileBankingDepositController;
 use App\Http\Controllers\OfficeExpenseController;
 use App\Http\Controllers\OthersLoanController;
@@ -34,13 +34,14 @@ Route::get('/config/clear', function () {
 });
 
 Route::middleware('auth')->group(function () {
-    Route::get('/', [HomeController::class, 'index'])->name('home');
+    // Route::get('/', [HomeController::class, 'index'])->name('home');
+
+    Route::redirect('/', '/dashboard');
 
     Route::get('/dashboard', [HomeController::class, 'dashboard'])->name('pages.home');
 
-
-    Route::get('/marketingexpenses', [MarketingexpenseController::class, 'index'])->name('marketingexpense.index');
-    Route::post('/marketingexpenses', [MarketingexpenseController::class, 'store'])->name('marketingexpense.store');
+    Route::delete('marketing-expense/delete', [MarketingExpenseController::class, 'delete'])->name('marketing-expense.delete');
+    Route::resource('marketing-expense', MarketingExpenseController::class)->except(['show', 'delete']);
 
     Route::delete('office-expense/delete', [OfficeExpenseController::class, 'delete'])->name('office-expense.delete');
     Route::resource('office-expense', OfficeExpenseController::class)->except(['show', 'delete']);

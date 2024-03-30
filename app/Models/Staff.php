@@ -9,8 +9,16 @@ class Staff extends Model
 {
     use HasFactory;
 
-    protected $fillable = ['staff_id', 'staff_name', 'staff_mobile_no', 'staff_address', 'staff_nid_no', 'staff_email_address', 'staff_salary_amount', 'staff_picture'];
-    
+    protected $fillable = [
+        'staff_id',
+        'staff_name',
+        'staff_mobile_no',
+        'staff_address',
+        'staff_nid_no',
+        'staff_email_address',
+        'staff_salary_amount',
+        'staff_picture',
+    ];
 
     // public function uniqueStaffId()
     // {

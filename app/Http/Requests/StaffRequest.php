@@ -37,7 +37,7 @@ class StaffRequest extends FormRequest
         }
 
         return [
-            'staff_id'            => ['required', 'string', 'max:30'],
+            'staff_id'            => ['required', 'string', 'max:30', $uniqueRule],
             'staff_name'          => ['required', 'string', 'max:100'],
             'staff_mobile_no'     => ['required', 'string', 'max:16'],
             'staff_address'       => ['nullable', 'string', 'max:255'],
