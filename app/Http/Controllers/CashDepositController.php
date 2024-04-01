@@ -2,9 +2,11 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\Requests\CashDepositRequest;
 use App\Models\CashDeposit;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Session;
+use Illuminate\Support\Facades\Validator;
 
 class CashDepositController extends Controller
 {
@@ -13,8 +15,12 @@ class CashDepositController extends Controller
      */
     public function index()
     {
-        $cashdeposits = Cashdeposit::all();
-        return view('pages.Deposit.cash', compact('cashdeposits'));
+        $data                 = [];
+        $data['menu']         = "deposit";
+        $data['child_menu']   = "cashDeposit";
+        $data['cashDeposits'] = CashDeposit::all();
+
+        return view('pages.Deposit.cash.index', $data);
     }
 
     /**
@@ -22,44 +28,40 @@ class CashDepositController extends Controller
      */
     public function create()
     {
-        //
+        $data               = [];
+        $data['menu']       = "deposit";
+        $data['child_menu'] = "cashDeposit";
+
+        return view('pages.Deposit.cash.create', $data);
     }
 
     /**
      * Store a newly created resource in storage.
      */
-    public function store(Request $request)
+    public function store(CashDepositRequest $request)
     {
-        $request->validate([
-            'deposit_type' => ['required', 'string', 'max:30'],
-            'deposit_date' => ['required'],
-            'depositor_id' => ['required', 'string', 'max:20', 'unique:'.Cashdeposit::class],
-            'depositor_name' => ['required', 'string', 'max:100'],
-            'depositor_mobile_no' => ['required', 'max:20', 'unique:'.Cashdeposit::class],
-            'depositor_address' => ['nullable', 'string'],
-            'depositor_nid_no' => ['nullable', 'string', 'max:20', 'unique:'.Cashdeposit::class],
-            'deposit_amount' => ['required'],
-           
-        ]);
+        $validatedData = $request->validated();
 
+        $insertData = [
+            'deposit_type'        => $validatedData['deposit_type'],
+            'deposit_date'        => $validatedData['deposit_date'],
+            'depositor_id'        => $validatedData['depositor_id'],
+            'depositor_name'      => $validatedData['depositor_name'],
+            'depositor_mobile_no' => $validatedData['depositor_mobile_no'],
+            'depositor_address'   => $validatedData['depositor_address'],
+            'depositor_nid_no'    => $validatedData['depositor_nid_no'],
+            'deposit_amount'      => $validatedData['deposit_amount'],
+        ];
 
-        $cashdeposit = Cashdeposit::create([
-            'deposit_type' => $request->deposit_type,
-            'deposit_date' => $request->deposit_date,
-            'depositor_id' => $request->depositor_id,
-            'depositor_name' => $request->depositor_name,
-            'depositor_mobile_no' => $request->depositor_mobile_no,
-            'depositor_address' => $request->depositor_address,
-            'depositor_nid_no' => $request->depositor_nid_no,
-            'deposit_amount' => $request->deposit_amount,
-        ]);
+        $cashDeposit = CashDeposit::create($insertData);
 
-        if($cashdeposit) {
-            $response = Session::flash('success', "Data Save Successfully!");
-        }else{
-            $response = Session::flash('error', "Data Save Failed!");
+        if ($cashDeposit) {
+            $response = Session::flash('success', "Cash Deposit Save Successfully!");
+        } else {
+            $response = Session::flash('error', "Cash Deposit Save Failed!");
         }
-        return redirect()->back()->with($response);
+
+        return redirect()->route('cash-deposit.index')->with($response);
     }
 
     /**
@@ -75,15 +77,41 @@ class CashDepositController extends Controller
      */
     public function edit(CashDeposit $cashDeposit)
     {
-        //
+        $data                = [];
+        $data['menu']        = "deposit";
+        $data['child_menu']  = "cashDeposit";
+        $data['cashDeposit'] = $cashDeposit;
+
+        return view('pages.Deposit.cash.edit', $data);
     }
 
     /**
      * Update the specified resource in storage.
      */
-    public function update(Request $request, CashDeposit $cashDeposit)
+    public function update(CashDepositRequest $request, int $cashDepositId)
     {
-        //
+        $validatedData = $request->validated();
+
+        $updateData = [
+            'deposit_type'        => $validatedData['deposit_type'],
+            'deposit_date'        => $validatedData['deposit_date'],
+            'depositor_id'        => $validatedData['depositor_id'],
+            'depositor_name'      => $validatedData['depositor_name'],
+            'depositor_mobile_no' => $validatedData['depositor_mobile_no'],
+            'depositor_address'   => $validatedData['depositor_address'],
+            'depositor_nid_no'    => $validatedData['depositor_nid_no'],
+            'deposit_amount'      => $validatedData['deposit_amount'],
+        ];
+
+        $cashDeposit = CashDeposit::where('id', $cashDepositId)->update($updateData);
+
+        if ($cashDeposit) {
+            $response = Session::flash('success', "Cash Deposit Update Successfully!");
+        } else {
+            $response = Session::flash('error', "Cash Deposit Update Failed!");
+        }
+
+        return redirect()->route('cash-deposit.index')->with($response);
     }
 
     /**
@@ -93,4 +121,35 @@ class CashDepositController extends Controller
     {
         //
     }
+
+    public function delete(Request $request)
+    {
+        $response = ['error' => 'Error Found'];
+
+        if ($request->ajax()) {
+            $validator = Validator::make($request->all(), [
+                'id' => 'required',
+            ]);
+
+            if ($validator->fails()) {
+                $response = ['error' => 'Error Found'];
+            } else {
+                $cashDeposit = CashDeposit::find($request->id);
+                $cashDeposit->delete();
+
+                if ($cashDeposit) {
+                    $response = ['success' => 'Cash Deposit Delete Successfully'];
+                } else {
+                    $response = ['error' => 'Database Error Found'];
+                }
+
+            }
+
+        } else {
+            $response = ['error' => 'You are not authorized'];
+        }
+
+        return response()->json($response);
+    }
+
 }
