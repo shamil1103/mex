@@ -4,7 +4,6 @@ namespace App\Http\Controllers;
 
 use App\Models\BkashDeposit;
 use Illuminate\Http\Request;
-use App\Http\Controllers\BkashDepositController;
 use Illuminate\Support\Facades\Session;
 
 class BkashDepositController extends Controller
@@ -41,7 +40,7 @@ class BkashDepositController extends Controller
             'depositor_address' => ['nullable', 'string'],
             'depositor_nid_no' => ['nullable', 'string', 'max:20', 'unique:'.Bkashdeposit::class],
             'deposit_amount' => ['required'],
-           
+
         ]);
 
 

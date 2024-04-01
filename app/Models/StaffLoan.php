@@ -9,14 +9,17 @@ class StaffLoan extends Model
 {
     use HasFactory;
 
-    protected $fillable = ['staff_loan_date', 'staff_address', 'staff_loan_description', 'staff_leader_name', 'staff_loan_amount', 'staff_id'];
-
-    // protected $primaryKey = ' ';
-
-    public $timestamps = false;
+    protected $fillable = [
+        'staff_loan_date',
+        'staff_id',
+        'staff_address',
+        'staff_loan_description',
+        'staff_leader_name',
+        'staff_loan_amount',
+    ];
 
     public function staff()
     {
-        return $this->belongsTo('App\Models\Staff', 'staff_id', 'staff_id');
+        return $this->belongsTo(Staff::class, 'staff_id', 'id');
     }
 }

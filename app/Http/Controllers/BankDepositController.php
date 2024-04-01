@@ -2,9 +2,11 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\Requests\BankDepositRequest;
 use App\Models\BankDeposit;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Session;
+use Illuminate\Support\Facades\Validator;
 
 
 class BankDepositController extends Controller
@@ -14,8 +16,17 @@ class BankDepositController extends Controller
      */
     public function index()
     {
+<<<<<<< HEAD
         $bankdeposits = Bankdeposit::all();
         return view('pages.deposit.bank', compact('bankdeposits'));
+=======
+        $data                 = [];
+        $data['menu']         = "deposit";
+        $data['child_menu']   = "bankDeposit";
+        $data['bankDeposits'] = BankDeposit::all();
+
+        return view('pages.Deposit.bank.index', $data);
+>>>>>>> 6b157e525feb4ea182f357f8348f504f276950cc
     }
 
     /**
@@ -23,46 +34,41 @@ class BankDepositController extends Controller
      */
     public function create()
     {
-        //
+        $data               = [];
+        $data['menu']       = "deposit";
+        $data['child_menu'] = "bankDeposit";
+
+        return view('pages.Deposit.bank.create', $data);
     }
 
     /**
      * Store a newly created resource in storage.
      */
-    public function store(Request $request)
+    public function store(BankDepositRequest $request)
     {
-        $request->validate([
-            'deposit_type' => ['required', 'string', 'max:30'],
-            'deposit_date' => ['required'],
-            'depositor_id' => ['required', 'string', 'max:20', 'unique:'.Bankdeposit::class],
-            'depositor_name' => ['required', 'string', 'max:100'],
-            'depositor_mobile_no' => ['required', 'max:20', 'unique:'.Bankdeposit::class],
-            'bank_name' => ['required', 'max:100'],
-            'depositor_description' => ['nullable', 'string'],
-            'depositor_nid_no' => ['nullable', 'string', 'max:20', 'unique:'.Bankdeposit::class],
-            'deposit_amount' => ['required'],
-           
-        ]);
+        $validatedData = $request->validated();
 
+        $insertData = [
+            'deposit_type'          => $validatedData['deposit_type'],
+            'deposit_date'          => $validatedData['deposit_date'],
+            'depositor_id'          => $validatedData['depositor_id'],
+            'depositor_name'        => $validatedData['depositor_name'],
+            'depositor_mobile_no'   => $validatedData['depositor_mobile_no'],
+            'bank_name'             => $validatedData['bank_name'],
+            'depositor_description' => $validatedData['depositor_description'],
+            'depositor_nid_no'      => $validatedData['depositor_nid_no'],
+            'deposit_amount'        => $validatedData['deposit_amount'],
+        ];
 
-        $bankdeposit = Bankdeposit::create([
-            'deposit_type' => $request->deposit_type,
-            'deposit_date' => $request->deposit_date,
-            'depositor_id' => $request->depositor_id,
-            'depositor_name' => $request->depositor_name,
-            'depositor_mobile_no' => $request->depositor_mobile_no,
-            'bank_name' => $request->bank_name,
-            'depositor_description' => $request->depositor_description,
-            'depositor_nid_no' => $request->depositor_nid_no,
-            'deposit_amount' => $request->deposit_amount,
-        ]);
+        $bankDeposit = BankDeposit::create($insertData);
 
-        if($bankdeposit) {
-            $response = Session::flash('success', "Data Save Successfully!");
-        }else{
-            $response = Session::flash('error', "Data Save Failed!");
+        if ($bankDeposit) {
+            $response = Session::flash('success', "Bank Deposit Save Successfully!");
+        } else {
+            $response = Session::flash('error', "Bank Deposit Save Failed!");
         }
-        return redirect()->back()->with($response);
+
+        return redirect()->route('bank-deposit.index')->with($response);
     }
 
     /**
@@ -78,15 +84,43 @@ class BankDepositController extends Controller
      */
     public function edit(BankDeposit $bankDeposit)
     {
-        //
+        $data                = [];
+        $data['menu']        = "deposit";
+        $data['child_menu']  = "bankDeposit";
+        $data['bankDeposit'] = $bankDeposit;
+
+        return view('pages.Deposit.bank.edit', $data);
     }
 
     /**
      * Update the specified resource in storage.
      */
-    public function update(Request $request, BankDeposit $bankDeposit)
+    public function update(BankDepositRequest $request, int $bankDepositId)
     {
-        //
+        $validatedData = $request->validated();
+
+        $updateData = [
+            'deposit_type'          => $validatedData['deposit_type'],
+            'deposit_date'          => $validatedData['deposit_date'],
+            'depositor_id'          => $validatedData['depositor_id'],
+            'depositor_name'        => $validatedData['depositor_name'],
+            'depositor_mobile_no'   => $validatedData['depositor_mobile_no'],
+            'bank_name'             => $validatedData['bank_name'],
+            'depositor_description' => $validatedData['depositor_description'],
+            'depositor_nid_no'      => $validatedData['depositor_nid_no'],
+            'deposit_amount'        => $validatedData['deposit_amount'],
+        ];
+
+        $bankDeposit = BankDeposit::where('id', $bankDepositId)->update($updateData);
+
+        if ($bankDeposit) {
+            $response = Session::flash('success', "Bank Deposit Update Successfully!");
+        } else {
+            $response = Session::flash('error', "Bank Deposit Update Failed!");
+        }
+
+        return redirect()->route('bank-deposit.index')->with($response);
+
     }
 
     /**
@@ -96,4 +130,35 @@ class BankDepositController extends Controller
     {
         //
     }
+
+    public function delete(Request $request)
+    {
+        $response = ['error' => 'Error Found'];
+
+        if ($request->ajax()) {
+            $validator = Validator::make($request->all(), [
+                'id' => 'required',
+            ]);
+
+            if ($validator->fails()) {
+                $response = ['error' => 'Error Found'];
+            } else {
+                $cashDeposit = BankDeposit::find($request->id);
+                $cashDeposit->delete();
+
+                if ($cashDeposit) {
+                    $response = ['success' => 'Bank Deposit Delete Successfully'];
+                } else {
+                    $response = ['error' => 'Database Error Found'];
+                }
+
+            }
+
+        } else {
+            $response = ['error' => 'You are not authorized'];
+        }
+
+        return response()->json($response);
+    }
+
 }
