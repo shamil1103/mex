@@ -15,7 +15,7 @@ class BkashDepositController extends Controller
     public function index()
     {
         $bkashdeposits = Bkashdeposit::all();
-        return view('pages.Deposit.nagod-bkash', compact('bkashdeposits'));
+        return view('pages.deposit.nagod-bkash', compact('bkashdeposits'));
     }
 
     /**

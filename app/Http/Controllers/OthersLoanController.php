@@ -14,7 +14,7 @@ class OthersLoanController extends Controller
     public function index()
     {
         $othersloan = Othersloan::all();
-        return view('pages.Loan.others-loan', compact('othersloan'));
+        return view('pages.loan.others-loan', compact('othersloan'));
     }
 
     /**

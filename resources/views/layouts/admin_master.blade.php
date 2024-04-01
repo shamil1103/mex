@@ -215,38 +215,38 @@
 
 
 
-    var url = window.location;
-    var href = url.href;
-    let c = href.split("/").length - 3
-    var afterWithout = href.substr(0, href.lastIndexOf("/"));
+    // var url = window.location;
+    // var href = url.href;
+    // let c = href.split("/").length - 3
+    // var afterWithout = href.substr(0, href.lastIndexOf("/"));
 
-    if (c == 1) {
-        $('ul.sidebar-menu a').filter(function() {
-            return this.href == url;
-        }).addClass('active');
-        // for sidebar menu and treeview
-        $('ul.treeview-menu a').filter(function() {
-                return this.href == url;
-            }).parentsUntil(".sidebar-menu > .treeview-menu")
-            .css({
-                'display': 'block'
-            })
-            .addClass('menu-open').prev('a')
-            .addClass('active');
-    } else {
-        $('ul.sidebar-menu a').filter(function() {
-            return this.href == afterWithout;
-        }).addClass('active');
-        // for sidebar menu and treeview
-        $('ul.treeview-menu a').filter(function() {
-                return this.href == afterWithout;
-            }).parentsUntil(".sidebar-menu > .treeview-menu")
-            .css({
-                'display': 'block'
-            })
-            .addClass('menu-open').prev('a')
-            .addClass('active');
-    }
+    // if (c == 1) {
+    //     $('ul.sidebar-menu a').filter(function() {
+    //         return this.href == url;
+    //     }).addClass('active');
+    //     // for sidebar menu and treeview
+    //     $('ul.treeview-menu a').filter(function() {
+    //             return this.href == url;
+    //         }).parentsUntil(".sidebar-menu > .treeview-menu")
+    //         .css({
+    //             'display': 'block'
+    //         })
+    //         .addClass('menu-open').prev('a')
+    //         .addClass('active');
+    // } else {
+    //     $('ul.sidebar-menu a').filter(function() {
+    //         return this.href == afterWithout;
+    //     }).addClass('active');
+    //     // for sidebar menu and treeview
+    //     $('ul.treeview-menu a').filter(function() {
+    //             return this.href == afterWithout;
+    //         }).parentsUntil(".sidebar-menu > .treeview-menu")
+    //         .css({
+    //             'display': 'block'
+    //         })
+    //         .addClass('menu-open').prev('a')
+    //         .addClass('active');
+    // }
 
 </script>
 

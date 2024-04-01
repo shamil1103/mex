@@ -85,13 +85,13 @@
               <i class="fa fa-angle-left pull-right"></i>
             </span>
           </a>
-          <!-- <ul class="treeview-menu">
-            <li><a href=" "><i class="fa fa-circle-o"></i> Daily </a></li>
-            <li><a href=" "><i class="fa fa-circle-o"></i> Monthly </a></li>
+          <ul class="treeview-menu">
+            <!-- <li><a href=" "><i class="fa fa-circle-o"></i> Daily </a></li>
+            <li><a href=" "><i class="fa fa-circle-o"></i> Monthly </a></li> -->
             <li><a href=" "><i class="fa fa-circle-o"></i> Deposit </a></li>
             <li><a href=" "><i class="fa fa-circle-o"></i> Expense </a></li>
             <li><a href=" "><i class="fa fa-circle-o"></i> Loan </a></li>
-          </ul> -->
+          </ul>
         </li>
 
         <li class="treeview">

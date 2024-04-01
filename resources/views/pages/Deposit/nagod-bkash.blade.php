@@ -27,7 +27,7 @@
           <header class="bg-info" style="border-radius: 3px;">
             <a href="" typy="button" class="btn btn-primary" data-toggle="modal" data-target="#modal-default"><i class="fa fa-plus"></i> New Nagad/Bkash Deposit </a>
           </header>
-
+          
           <div class="mb" style="margin-bottom: 10px;"></div>
 
           {{--for error messages--}}

@@ -18,7 +18,7 @@ class StaffLoanController extends Controller
         $staffs = Staff::all();
 
         $staffloan = Staffloan::all();
-        return view('pages.Loan.staff-loan', compact('staffloan', 'staffs'));
+        return view('pages.loan.staff-loan', compact('staffloan', 'staffs'));
     }
 
     /**

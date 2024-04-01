@@ -14,7 +14,7 @@ class CashDepositController extends Controller
     public function index()
     {
         $cashdeposits = Cashdeposit::all();
-        return view('pages.Deposit.cash', compact('cashdeposits'));
+        return view('pages.deposit.cash', compact('cashdeposits'));
     }
 
     /**

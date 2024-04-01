@@ -15,7 +15,7 @@ class BankDepositController extends Controller
     public function index()
     {
         $bankdeposits = Bankdeposit::all();
-        return view('pages.Deposit.bank', compact('bankdeposits'));
+        return view('pages.deposit.bank', compact('bankdeposits'));
     }
 
     /**
