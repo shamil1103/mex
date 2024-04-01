@@ -72,26 +72,32 @@
                     </span>
                 </a>
                 <ul class="treeview-menu">
-                    <li class="@if (isset($child_menu) && $child_menu == 'officeExpense') active @endif"><a href="{{ route('office-expense.index') }}"><i class="fa fa-circle-o"></i> Office </a></li>
-                    <li class="@if (isset($child_menu) && $child_menu == 'marketingExpense') active @endif"><a href="{{ route('marketing-expense.index') }}"><i class="fa fa-circle-o"></i> Marketing </a>
+                    <li class="@if (isset($child_menu) && $child_menu == 'officeExpense') active @endif"><a
+                            href="{{ route('office-expense.index') }}"><i class="fa fa-circle-o"></i> Office </a></li>
+                    <li class="@if (isset($child_menu) && $child_menu == 'marketingExpense') active @endif"><a
+                            href="{{ route('marketing-expense.index') }}"><i class="fa fa-circle-o"></i> Marketing </a>
                     </li>
                 </ul>
             </li>
 
-            <li class="treeview">
+            <li class="treeview @if (isset($menu) && $menu == 'report') active menu-open @endif">
                 <a href="#">
                     <i class="fa fa-file-text"></i> <span> Reports </span>
                     <span class="pull-right-container">
                         <i class="fa fa-angle-left pull-right"></i>
                     </span>
                 </a>
-                <!-- <ul class="treeview-menu">
-            <li><a href=" "><i class="fa fa-circle-o"></i> Daily </a></li>
-            <li><a href=" "><i class="fa fa-circle-o"></i> Monthly </a></li>
-            <li><a href=" "><i class="fa fa-circle-o"></i> Deposit </a></li>
-            <li><a href=" "><i class="fa fa-circle-o"></i> Expense </a></li>
-            <li><a href=" "><i class="fa fa-circle-o"></i> Loan </a></li>
-          </ul> -->
+                <ul class="treeview-menu">
+                    <li class="@if (isset($child_menu) && $child_menu == 'deposit') active @endif"><a
+                            href="{{ route('report.deposit') }}"><i class="fa fa-circle-o"></i> Deposit</a></li>
+                    <li class="@if (isset($child_menu) && $child_menu == 'expense') active @endif"><a
+                            href="{{ route('report.expense') }}"><i class="fa fa-circle-o"></i> Expense</a></li>
+                    <li class="@if (isset($child_menu) && $child_menu == 'loan') active @endif"><a
+                            href="{{ route('user.index') }}"><i class="fa fa-circle-o"></i> Loan</a></li>
+
+                    {{-- <li><a href=" "><i class="fa fa-circle-o"></i> Daily </a></li> --}}
+                    {{-- <li><a href=" "><i class="fa fa-circle-o"></i> Monthly </a></li> --}}
+                </ul>
             </li>
 
             <li class="treeview @if (isset($menu) && $menu == 'settings') active menu-open @endif">
@@ -103,9 +109,10 @@
                 </a>
                 <ul class="treeview-menu">
                     <li class="@if (isset($child_menu) && $child_menu == 'expenseCategory') active @endif"><a
-                            href="{{ route('expense-category.index') }}"><i class="fa fa-circle-o"></i> Expense Category</a></li>
-                    <li class="@if (isset($child_menu) && $child_menu == 'user') active @endif"><a href="{{ route('user.index') }}"><i
-                                class="fa fa-circle-o"></i> User</a></li>
+                            href="{{ route('expense-category.index') }}"><i class="fa fa-circle-o"></i> Expense
+                            Category</a></li>
+                    <li class="@if (isset($child_menu) && $child_menu == 'user') active @endif"><a
+                            href="{{ route('user.index') }}"><i class="fa fa-circle-o"></i> User</a></li>
                 </ul>
             </li>
 

@@ -8,6 +8,7 @@ use App\Models\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Session;
 use Illuminate\View\View;
+use Illuminate\Support\Facades\Validator;
 
 class UserController extends Controller
 {
@@ -89,11 +90,20 @@ class UserController extends Controller
         $validatedData = $request->validated();
 
         $updateData = [
-            'name'     => $validatedData['name'],
-            'email'    => $validatedData['email'],
+            'name'  => $validatedData['name'],
+            'email' => $validatedData['email'],
         ];
 
-        if($validatedData['password']){
+        if ($validatedData['image']) {
+
+            if ($validatedData['old_image']) {
+                removeFile($validatedData['old_image']);
+            }
+
+            $updateData['image'] = uploadFile($validatedData['image'], 'users/');
+        }
+
+        if ($validatedData['password']) {
             $updateData['password'] = bcrypt($validatedData['password']);
         }
 

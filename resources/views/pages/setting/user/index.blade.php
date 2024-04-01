@@ -52,6 +52,7 @@
                                     <th>SL No </th>
                                     <th>Name</th>
                                     <th>Email</th>
+                                    <th>Image</th>
                                     <th>Action </th>
                                 </tr>
                             </thead>
@@ -61,6 +62,15 @@
                                         <td>{{ $loop->iteration }}</td>
                                         <td>{{ $user->name }}</td>
                                         <td>{{ $user->email }}</td>
+                                        <td>
+                                            @if ($user->image)
+                                                <a href="{{ asset($user->image) }}" target="_blank"
+                                                    title="{{ $user->name }} Image">
+                                                    <img class="user-image-preview" src="{{ asset($user->image) }}"
+                                                        alt="{{ $user->name }} Image" />
+                                                </a>
+                                            @endif
+                                        </td>
                                         <td>
                                             <a style="padding: 2px"
                                                 href="{{ route('user.edit', ['user' => $user->id]) }}"><i

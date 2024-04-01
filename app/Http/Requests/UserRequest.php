@@ -40,6 +40,8 @@ class UserRequest extends FormRequest
                 'email'                 => ['required', 'email', $uniqueRule],
                 'password'              => ['nullable', 'confirmed', 'min:6'],
                 'password_confirmation' => ['nullable', 'min:6'],
+                'image'                 => ['nullable', 'file', 'image'],
+                'old_image'             => ['nullable', 'string'],
             ];
 
         } else {
@@ -48,6 +50,8 @@ class UserRequest extends FormRequest
                 'email'                 => ['required', 'email', $uniqueRule],
                 'password'              => ['required', 'confirmed', 'min:6'],
                 'password_confirmation' => ['required', 'min:6'],
+                'image'                 => ['nullable', 'file', 'image'],
+
             ];
         }
 
