@@ -14,8 +14,8 @@
         </h1>
         <ol class="breadcrumb">
             <li><a href="{{ route('pages.home') }}"><i class="fa fa-dashboard"></i> Home </a></li>
-            <li><a href="#"> Expense </a></li>
-            <li class="active"> Bank Expense </li>
+            <li><a href="#"> Report </a></li>
+            <li class="active"> Expense </li>
         </ol>
     </section>
 

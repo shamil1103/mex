@@ -96,7 +96,7 @@ class UserController extends Controller
 
         if ($validatedData['image']) {
 
-            if ($validatedData['old_image']) {
+            if (isset($validatedData['old_image']) && $validatedData['old_image']) {
                 removeFile($validatedData['old_image']);
             }
 
