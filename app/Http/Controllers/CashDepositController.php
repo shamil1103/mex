@@ -15,17 +15,12 @@ class CashDepositController extends Controller
      */
     public function index()
     {
-<<<<<<< HEAD
-        $cashdeposits = Cashdeposit::all();
-        return view('pages.deposit.cash', compact('cashdeposits'));
-=======
         $data                 = [];
         $data['menu']         = "deposit";
         $data['child_menu']   = "cashDeposit";
         $data['cashDeposits'] = CashDeposit::all();
 
         return view('pages.Deposit.cash.index', $data);
->>>>>>> 6b157e525feb4ea182f357f8348f504f276950cc
     }
 
     /**

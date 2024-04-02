@@ -35,23 +35,6 @@
                 </ul>
             </li>
 
-<<<<<<< HEAD
-        <li class="treeview">
-          <a href="#">
-            <i class="fa fa-file-text"></i> <span> Reports </span>
-            <span class="pull-right-container">
-              <i class="fa fa-angle-left pull-right"></i>
-            </span>
-          </a>
-          <ul class="treeview-menu">
-            <!-- <li><a href=" "><i class="fa fa-circle-o"></i> Daily </a></li>
-            <li><a href=" "><i class="fa fa-circle-o"></i> Monthly </a></li> -->
-            <li><a href=" "><i class="fa fa-circle-o"></i> Deposit </a></li>
-            <li><a href=" "><i class="fa fa-circle-o"></i> Expense </a></li>
-            <li><a href=" "><i class="fa fa-circle-o"></i> Loan </a></li>
-          </ul>
-        </li>
-=======
             <li class="treeview @if (isset($menu) && $menu == 'staff') active menu-open @endif">
                 <a href="#">
                     <i class="fa fa-users"></i> <span>Staff</span>
@@ -64,7 +47,6 @@
                                 class="fa fa-circle-o"></i> Staff Info</a></li>
                 </ul>
             </li>
->>>>>>> 6b157e525feb4ea182f357f8348f504f276950cc
 
             <li class="treeview @if (isset($menu) && $menu == 'loan') active menu-open @endif">
                 <a href="#">

@@ -15,10 +15,6 @@ class OthersLoanController extends Controller
      */
     public function index()
     {
-<<<<<<< HEAD
-        $othersloan = Othersloan::all();
-        return view('pages.loan.others-loan', compact('othersloan'));
-=======
         $data                = [];
         $data['menu']        = "loan";
         $data['child_menu']  = "othersLoan";
@@ -26,7 +22,6 @@ class OthersLoanController extends Controller
 
         return view('pages.Loan.others-loan.index', $data);
 
->>>>>>> 6b157e525feb4ea182f357f8348f504f276950cc
     }
 
     /**

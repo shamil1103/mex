@@ -22,12 +22,7 @@ class StaffLoanController extends Controller
         $data['staffs']     = Staff::all();
         $data['staffLoans'] = StaffLoan::all();
 
-<<<<<<< HEAD
-        $staffloan = Staffloan::all();
-        return view('pages.loan.staff-loan', compact('staffloan', 'staffs'));
-=======
         return view('pages.Loan.staff-loan.index', $data);
->>>>>>> 6b157e525feb4ea182f357f8348f504f276950cc
     }
 
     /**

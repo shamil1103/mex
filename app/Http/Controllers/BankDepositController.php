@@ -16,17 +16,12 @@ class BankDepositController extends Controller
      */
     public function index()
     {
-<<<<<<< HEAD
-        $bankdeposits = Bankdeposit::all();
-        return view('pages.deposit.bank', compact('bankdeposits'));
-=======
         $data                 = [];
         $data['menu']         = "deposit";
         $data['child_menu']   = "bankDeposit";
         $data['bankDeposits'] = BankDeposit::all();
 
         return view('pages.Deposit.bank.index', $data);
->>>>>>> 6b157e525feb4ea182f357f8348f504f276950cc
     }
 
     /**
