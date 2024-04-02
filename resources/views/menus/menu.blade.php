@@ -2,7 +2,7 @@
     <section class="sidebar">
         <div class="user-panel">
             <div class="pull-left image">
-                <img src="{{ asset('assets/img/profile-picture12.jpg') }}" class="img-circle" alt="User Image">
+                <img src="{{ auth()->user()->image ? asset(auth()->user()->image) :  asset('assets/img/profile-picture12.jpg') }}" class="img-circle" alt="User Image">
             </div>
             <div class="pull-left info">
                 <p> {{ Auth::user()->name }}</p>
@@ -93,7 +93,7 @@
                     <li class="@if (isset($child_menu) && $child_menu == 'expense') active @endif"><a
                             href="{{ route('report.expense') }}"><i class="fa fa-circle-o"></i> Expense</a></li>
                     <li class="@if (isset($child_menu) && $child_menu == 'loan') active @endif"><a
-                            href="{{ route('user.index') }}"><i class="fa fa-circle-o"></i> Loan</a></li>
+                            href="{{ route('report.loan') }}"><i class="fa fa-circle-o"></i> Loan</a></li>
 
                     {{-- <li><a href=" "><i class="fa fa-circle-o"></i> Daily </a></li> --}}
                     {{-- <li><a href=" "><i class="fa fa-circle-o"></i> Monthly </a></li> --}}

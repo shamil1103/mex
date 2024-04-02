@@ -15,6 +15,7 @@ use App\Http\Controllers\StaffLoanController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\DepositReportController;
 use App\Http\Controllers\ExpenseReportController;
+use App\Http\Controllers\LoanReportController;
 
 /*
 |--------------------------------------------------------------------------
@@ -70,9 +71,10 @@ Route::middleware('auth')->group(function () {
     Route::delete('mobile-banking-deposit/delete', [MobileBankingDepositController::class, 'delete'])->name('mobile-banking-deposit.delete');
     Route::resource('mobile-banking-deposit', MobileBankingDepositController::class)->except(['show', 'delete']);
 
-    Route::group(['prefix'=>'report','as'=>'report.'], function(){
+    Route::prefix('report')->name('report.')->group(function(){
         Route::get('deposit', [DepositReportController::class, 'index'])->name('deposit');
         Route::get('expense', [ExpenseReportController::class, 'index'])->name('expense');
+        Route::get('loan', [LoanReportController::class, 'index'])->name('loan');
     });
 
 
